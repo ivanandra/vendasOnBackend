@@ -9,17 +9,16 @@ interface Request {
 
 class CreateOrderService {
 
-    private orderRepository: OrdersRepository;
+    private orderRepository:OrdersRepository;
 
-    constructor(orderRepository: OrdersRepository) {
+    constructor(orderRepository:OrdersRepository) {
 
         this.orderRepository = orderRepository;
     }
  
-    public execute({name, address}: Request) {
+    public execute({name, address}:Request) {
 
-        const order = this.orderRepository.create({
-        
+        const order:Order = this.orderRepository.create({    
            name,
            address
         })
