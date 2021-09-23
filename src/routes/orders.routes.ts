@@ -1,6 +1,7 @@
 import { json, Router } from 'express';
-import Order from '../models/Order';
 import OrdersRepository from '../repositories/OrdersRepository';
+
+import CreateOrderService from '../services/CreateOrderService';
 
 const ordersRouter = Router();
 const ordersRepository = new OrdersRepository();
@@ -16,11 +17,9 @@ ordersRouter.post('/', (request, response) => {
 
     const { name, address } = request.body;
 
-    const order = ordersRepository.create({
-        
-        name,
-        address
-    });
+    const createOrder = new CreateOrderService(ordersRepository)
+
+    const order = createOrder.execute({name, address});
 
     return response.json(order);
 });
