@@ -7,5 +7,5 @@ const app = express();
 app.use(routes);
 
 app.listen(3332, () => {
-    console.log(`Back-end started on port ${port}!`);
+console.log(`Back-end started on port ${port}!`);
 });
